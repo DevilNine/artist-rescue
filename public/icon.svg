@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  
+  <!-- Outer Shield/Frame -->
+  <path d="M256 80 L400 136 V264 C400 360 338 416 256 448 C174 416 112 360 112 264 V136 Z" 
+        fill="none" stroke="#ffffff" stroke-width="24" stroke-linejoin="round" filter="url(#glow)"/>
+  
+  <!-- Stylus/Pen and Cross (Rescue) -->
+  <g transform="translate(256, 264) rotate(-45) translate(-256, -264)" filter="url(#glow)">
+    <path d="M240 160 H272 V296 L256 336 L240 296 Z" fill="#ffffff" />
+    <path d="M240 128 H272 V144 H240 Z" fill="#ffffff" opacity="0.8" />
+  </g>
+  
+  <g transform="translate(256, 264) rotate(45) translate(-256, -264)" filter="url(#glow)">
+    <path d="M240 160 H272 V336 H240 Z" fill="#ffffff" />
+    <!-- Medical cross horizontal bar -->
+    <path d="M200 232 H312 V264 H200 Z" fill="#ffffff" />
+  </g>
+</svg>
