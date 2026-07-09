@@ -1,58 +1,96 @@
 <div align="center">
-  <img src="build/icon.png" width="128" alt="Artist Rescue Logo">
+  <img src="public/icon.svg" width="120" alt="Logo do Artist Rescue">
   <h1>Artist Rescue</h1>
-  <p><b>O kit de ferramentas definitivo de backup e restauração para artistas digitais.</b></p>
+  <p><b>O kit completo de backup, recuperação e manutenção para artistas digitais.</b></p>
 
-  [![Version](https://img.shields.io/badge/version-3.1.0-a855f7.svg?style=flat-square)](#)
-  [![Platform](https://img.shields.io/badge/platform-Windows-blue.svg?style=flat-square)](#)
-  [![License](https://img.shields.io/badge/license-Proprietary-rose.svg?style=flat-square)](#)
+  [![Versão](https://img.shields.io/badge/vers%C3%A3o-4.0.0-8b7aff.svg?style=flat-square)](#)
+  [![Plataforma](https://img.shields.io/badge/plataforma-Windows%2010%2B-8b7aff.svg?style=flat-square)](#)
+  [![Licença](https://img.shields.io/badge/licen%C3%A7a-Propriet%C3%A1ria-fb7185.svg?style=flat-square)](#)
 
   [🇺🇸 Read in English](README.md)
 </div>
 
 <br>
 
-**Artist Rescue** é um aplicativo desktop premium e especializado, criado para resolver as maiores dores de cabeça dos artistas digitais: espaços de trabalho perdidos, pincéis corrompidos, drivers travados e atualizações que quebram o software.
+**Artist Rescue** é um aplicativo desktop especializado que protege todo o seu ambiente criativo e mantém suas ferramentas funcionando. Ele faz backup de pincéis, espaços de trabalho e preferências com integridade criptográfica, encontra arquivos de projeto perdidos em qualquer disco, mantém seus apps de arte atualizados e corrige os problemas mais comuns de mesa digitalizadora e sistema — tudo em uma interface única, limpa e moderna.
 
-Seja usando Clip Studio Paint, MediBang ou FireAlpaca, o Artist Rescue protege automaticamente todo o seu ambiente criativo e mantém suas ferramentas funcionando perfeitamente.
+Feito para **Windows 10 e 11**, com detecção automática que funciona entre versões dos programas.
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Tudo o que ele faz
 
-- **Backup e Restauração em Um Clique**
-  Faça backup instantâneo de pincéis, atalhos, espaços de trabalho e preferências dos seus softwares de arte favoritos. Nunca mais perca sua configuração ao formatar o PC ou mudar de computador.
+### 🛡️ Backup e Restauração (à prova de corrupção)
+- **Manifesto SHA-256 por arquivo** — cada arquivo é "hasheado" e registrado dentro do backup.
+- **Gravação verificada** — o backup é escrito em um arquivo temporário `.partial` e só é promovido para o `.zip` final após uma releitura completa que confere cada entrada. Um backup corrompido nunca é gerado.
+- **Restauração segura por cima** — o hash de cada arquivo é conferido *antes* de ser gravado e *de novo depois*, sobrescrevendo a versão existente de forma contínua. Entradas corrompidas são ignoradas, nunca restauradas.
+- **Compatibilidade com o formato antigo** — backups v1 continuam totalmente restauráveis.
+- **Histórico de backups** — os últimos 50 backups são registrados, com reseleção rápida e indicador de "arquivo movido/excluído".
 
-- **Arquivos à Prova de Adulteração**
-  Cada backup é selado criptograficamente usando assinaturas SHA-256 HMAC. Isso garante que seus backups nunca sejam corrompidos, adulterados ou quebrados quando você mais precisa deles.
+### 🔍 Verificação de Integridade
+- Verifique qualquer backup **sem restaurá-lo**.
+- Detecta entradas corrompidas ou faltando dentro do arquivo.
+- Compara o backup com o **estado atual do disco** (idêntico / alterado / ausente).
 
-- **Softwares Suportados**
-  - Clip Studio Paint
-  - MediBang Paint Pro
-  - FireAlpaca
-  - JUMP PAINT
-  - VRoid Studio
-  - VTube Studio
+### 🎨 Detecção de Apps Independente de Versão
+A detecção combina o **registro de desinstalação do Windows** (todas as hives), **expansão de caminhos com curinga** (ex.: `Adobe Photoshop *` casa com qualquer ano), **descoberta de bibliotecas Steam** e **verificação de executáveis** — então continua funcionando após atualizações e reinstalações. As pastas de configuração detectadas têm o tamanho calculado, para você saber exatamente o que será salvo.
 
-- **Gerenciamento Inteligente de Software**
-  Faltando algum programa? O Artist Rescue possui um instalador integrado para aplicativos gratuitos (MediBang, FireAlpaca, JUMP PAINT) usando o Windows Package Manager (Winget) oficial, garantindo que você sempre obtenha a versão limpa e oficial.
+**Softwares suportados (mais de 25):**
+Adobe Photoshop · CLIP STUDIO PAINT · Krita · GIMP · MediBang Paint Pro · JUMP PAINT · FireAlpaca · Paint Tool SAI 1 e 2 · Aseprite · Paint.NET · Inkscape · Blender · MyPaint · Pencil2D · OpenToonz · Affinity Photo · Affinity Designer · Corel Painter · Rebelle · ArtRage · Paintstorm Studio · PureRef · Live2D Cubism · VRoid Studio · VTube Studio.
 
-- **Primeiros Socorros para Drivers de Mesa**
-  A pressão da caneta parou de funcionar? A ferramenta de correção de driver integrada reinicia instantaneamente os serviços da Wacom, Huion e mesas genéricas sem a necessidade de reiniciar o computador.
+### 🗂️ Procurador de Projetos
+- Busca em todos os discos por arquivos de projeto perdidos, por parte do nome.
+- Busca **sem sensibilidade a acento** (encontra `comissão` a partir de `comissao`).
+- Varre pastas do usuário, espelhos do **OneDrive** e discos secundários.
 
-- **Verificador de Dependências do Sistema**
-  Verifica e instala automaticamente componentes críticos do sistema (Visual C++ Redistributables, WebView2, .NET Framework) que os programas de arte precisam para rodar sem falhas.
+### 📑 Localizador de Duplicados
+- Encontra arquivos de projeto idênticos por **hash de conteúdo** — não só pelo nome.
+- Mostra quanto espaço você pode recuperar.
+
+### ⬆️ Central de Atualizações (via winget)
+- **Versões reais instaladas** lidas do seu sistema — nada fixo no código.
+- Apps gratuitos atualizam no lugar via o Windows Package Manager (winget) oficial; apps pagos são checados, mas deixados a cargo do fornecedor.
+- Totalmente protegida: se o winget não existir, ela explica como habilitá-lo, e nenhuma operação pode travar o app.
+
+### 🌐 Comunidade e Recursos
+- Uma biblioteca selecionada e categorizada: **pincéis, texturas, modelos 3D, paletas, fontes e aprendizado** — oficiais e da comunidade.
+- **Detecção de recursos locais** — encontra pacotes de pincéis e materiais já instalados dentro dos seus apps de arte.
+
+### 🩹 Correções e Manutenção (testadas e reversíveis)
+- **Reiniciar serviços da mesa** — todos os serviços de mesa detectados, de qualquer fabricante.
+- **Reiniciar o Windows Ink** — corrige pressão travada e toques fantasmas.
+- **Reciclar dispositivos da mesa** — desativa/reativa o dispositivo da caneta (como reconectá-la).
+- **Reiniciar o Explorer** — limpa cursores travados e a barra de tarefas congelada.
+- **Reconstruir o cache de fontes** — corrige fontes ausentes ou corrompidas nos apps de arte.
+- **Verificador de Arquivos do Sistema** — executa o `sfc /scannow` elevado.
+- **Limpar caches dos apps** — apaga com segurança apenas pastas de cache conhecidas.
+
+### ✒️ Detecção Aprimorada da Mesa
+Detecta **Wacom, Huion, XP-Pen, Gaomon, VEIKK, UGEE, Parblo, Artisul, XenceLabs e Genius** por três fontes ao mesmo tempo: suítes de driver instaladas (registro), serviços do Windows (com estado de execução) e dispositivos de caneta/digitalizador fisicamente conectados (PnP).
+
+### 🧪 Verificação de Integridade Real
+Inspeciona arquivos de verdade — executáveis faltando, configurações com zero bytes e arquivos JSON/XML corrompidos — e relata problemas concretos por app (não uma barra de progresso falsa).
+
+### 🩺 Compatibilidade do Sistema e Dependências
+- Reporta o **build do seu Windows 10/11**, o estado do Windows Ink e a disponibilidade do gerenciador de pacotes.
+- Verifica e instala componentes críticos: **Visual C++ Redistributable, WebView2 Runtime, .NET Framework**.
+
+### 🌍 Multi-idioma
+Interface completa em **Português (BR), Inglês e Espanhol**, alternável a qualquer momento.
+
+---
 
 ## 🚀 Download e Instalação
 
-Você pode baixar a versão mais recente na pasta **[Releases](../../tree/master/releases)**.
+Baixe a versão mais recente na pasta **[Releases](../../tree/master/releases)**.
 
-1. Escolha o **Setup Instalador** (recomendado) ou a **versão Portátil**.
+1. Escolha o **Setup Instalador** (recomendado) ou a versão **Portátil**.
 2. Execute o aplicativo.
-3. Seus softwares de arte instalados serão detectados automaticamente!
+3. Seus softwares de arte instalados são detectados automaticamente.
 
-## 🛡️ Segurança em Primeiro Lugar
-O Artist Rescue foi construído com padrões estritos de segurança. Os backups são validados contra ataques de path traversal e corrupção estrutural de ZIP antes de serem restaurados, garantindo que seu sistema permaneça seguro e estável.
+## 🔒 Segurança
+
+Todo comando roda através de PowerShell oculto e com tempo limitado (compatível com todos os builds do Windows 10+). Os backups são validados contra path traversal e corrupção de estrutura ZIP, os destinos da restauração são restritos às suas pastas de usuário e do Steam, e os links externos são limitados a HTTPS.
 
 ---
 <div align="center">
